@@ -2,5 +2,7 @@ github.com/liaozhai/crawler v0.0.5 h1:bqBMMRnjnDbeb0C596AiefTbYVgQgpABD7EZG6NILS
 github.com/liaozhai/crawler v0.0.5/go.mod h1:BFsot5AFbzA+q999WMSx8E/Qi6IQB6DEKDFpnkScwP4=
 github.com/liaozhai/crawler v0.0.6 h1:JkTt837mzGqQMlVBlpqUwWxJR/fZxhft6ACQyfp7SxQ=
 github.com/liaozhai/crawler v0.0.6/go.mod h1:BFsot5AFbzA+q999WMSx8E/Qi6IQB6DEKDFpnkScwP4=
+github.com/liaozhai/crawler v0.0.7 h1:6Uka8scZIwEj3zloCmApPW/kuA9onGre+bt1+Du2/rQ=
+github.com/liaozhai/crawler v0.0.7/go.mod h1:BFsot5AFbzA+q999WMSx8E/Qi6IQB6DEKDFpnkScwP4=
 golang.org/x/net v0.55.0 h1:bcvxaJn3e1U6InsFWt1JUq1aSjnRxLzT2rtD2KfkDF8=
 golang.org/x/net v0.55.0/go.mod h1:L5U2KuzuOe1lY7Z+aWVIKK6qEeJXnXV9yzGA+WCHJww=
