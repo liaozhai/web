@@ -60,7 +60,7 @@ func parse(base *url.URL, body []byte) ([]string, error) {
 	return urls, nil
 }
 
-var transform = crawler.Transformer[string, []byte](func(base string) crawler.Interface[string, []byte] {
+var transform = crawler.Transformer[string, []byte](func(base string) crawler.Vertice[string, []byte] {
 	tr := &http.Transport{
 		MaxIdleConns:       10,
 		IdleConnTimeout:    30 * time.Second,
