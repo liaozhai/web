@@ -8,7 +8,6 @@ import (
 	"time"
 
 	"github.com/liaozhai/crawler"
-	"github.com/liaozhai/set"
 	"golang.org/x/net/html"
 	"golang.org/x/net/html/atom"
 )
@@ -32,7 +31,7 @@ func parse(base *url.URL, body []byte) ([]string, error) {
 		return nil, err
 	}
 	urls := []string{}
-	s := set.New[string]()
+	s := make(map[string]struct{})
 	for n := range doc.Descendants() {
 		if n.Type == html.ElementNode && n.DataAtom == atom.A {
 			for _, a := range n.Attr {
@@ -48,8 +47,8 @@ func parse(base *url.URL, body []byte) ([]string, error) {
 						u.Scheme = base.Scheme
 						u.Host = base.Host
 						v := u.String()
-						if !s.Has(v) {
-							s.Add(v)
+						if _, ok := s[v]; !ok {
+							s[v] = struct{}{}
 							urls = append(urls, v)
 						}
 					}
