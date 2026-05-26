@@ -6,5 +6,3 @@ require (
 	github.com/liaozhai/crawler v0.0.5
 	golang.org/x/net v0.55.0
 )
-
-require github.com/liaozhai/set v0.0.1 // indirect
