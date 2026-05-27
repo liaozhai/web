@@ -60,7 +60,7 @@ func parse(base *url.URL, body []byte) ([]string, error) {
 	return urls, nil
 }
 
-var transform = crawler.Transformer[string, []byte](func(base string) crawler.Vertice[string, []byte] {
+var transform = crawler.Transformer[string, []byte](func(base string) (crawler.Vertice[string, []byte], error) {
 	tr := &http.Transport{
 		MaxIdleConns:       10,
 		IdleConnTimeout:    30 * time.Second,
@@ -69,22 +69,22 @@ var transform = crawler.Transformer[string, []byte](func(base string) crawler.Ve
 	client := &http.Client{Transport: tr}
 	resp, err := client.Get(base)
 	if err != nil {
-		return response{[]byte{}, []string{}}
+		return nil, err
 	}
 	defer resp.Body.Close()
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		return response{[]byte{}, []string{}}
+		return nil, err
 	}
 	u, err := url.Parse(base)
 	if err != nil {
-		return response{[]byte{}, []string{}}
+		return nil, err
 	}
 	urls, err := parse(u, body)
 	if err != nil {
-		return response{[]byte{}, []string{}}
+		return nil, err
 	}
-	return response{body: body, urls: urls}
+	return response{body: body, urls: urls}, nil
 })
 
 func Crawl(base string, depth int, out chan crawler.Result[string, []byte]) {
